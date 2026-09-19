@@ -39,8 +39,11 @@ export default {
 export interface Env {
   APP_NAME?: string;
   LINQ_API_KEY?: string;
+  LINQ_FROM_NUMBER?: string;
+  LINQ_TEST_TO_NUMBER?: string;
   LINQ_WEBHOOK_SECRET?: string;
   LINQ_SKIP_VERIFY?: string;
+  LINQ_API_BASE_URL?: string;
   BROWSERBASE_API_KEY?: string;
   BROWSERBASE_PROJECT_ID?: string;
   MODEL_READ_API_KEY?: string;

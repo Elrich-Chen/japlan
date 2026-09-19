@@ -5,10 +5,25 @@
 ```bash
 cp .env.example .env   # fill REQUIRED keys when ready
 npm install
+npm run sync:dev-vars  # copy APP_NAME + LINQ_* into .dev.vars (no values printed)
 npm run dev            # wrangler dev
 ```
 
-Webhook URL for Linq (local tunnel): point Linq Partner API at your tunnel → `POST /webhooks/linq`.
+### Phase 0 inbound (Linq → Worker)
+
+1. `npx wrangler login`
+2. `npm run sync:dev-vars` — until `LINQ_WEBHOOK_SECRET` is set, this forces `LINQ_SKIP_VERIFY=1`
+3. `npm run dev` — local Worker on `:8787`
+4. Public URL: `cloudflared tunnel --url http://localhost:8787` (or `npx wrangler tunnel` if available) → note the `https://…` host
+5. Subscribe Linq:
+
+```bash
+WEBHOOK_URL=https://<tunnel-host>/webhooks/linq npm run linq:webhook
+```
+
+6. Paste the printed `signing_secret` into `.env` as `LINQ_WEBHOOK_SECRET`, set `LINQ_SKIP_VERIFY=0`, then `npm run sync:dev-vars` and restart `npm run dev`
+
+Webhook path: `POST /webhooks/linq` (script appends `?version=2026-02-03`).
 
 ## Cloudflare
 
@@ -36,9 +51,10 @@ npx wrangler secret put MODEL_COMPOSE_API_KEY
 
 ## Linq
 
-1. Register Partner API webhook to `https://<worker>/webhooks/linq`
+1. Register Partner API webhook to `https://<worker>/webhooks/linq` (`npm run linq:webhook` or dashboard)
 2. Verify signature with `LINQ_WEBHOOK_SECRET`
 3. Dedupe on `event_id` before routing to TripAgent
+4. Outbound smoke: `npm run linq:send`
 
 ## Browserbase
 

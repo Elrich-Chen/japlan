@@ -1,5 +1,6 @@
 import type { Env } from "../../server";
 import type { Intent, VirgilEvent } from "../../shared";
+import { isVirgilGreeting } from "../../shared";
 import { createModelClient } from "../provider";
 
 /**
@@ -24,6 +25,9 @@ export async function composeReply(
 }
 
 function canned(intent: Intent, event: VirgilEvent): string | null {
+  if (isVirgilGreeting(event.text)) {
+    return "Hey — I'm Virgil. I'm in this chat for the trip — text me anytime.";
+  }
   switch (intent) {
     case "DISRUPTION":
       return "Got it — looking at options that still work for everyone. Hang tight.";

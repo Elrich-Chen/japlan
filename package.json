@@ -9,7 +9,10 @@
     "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "linq:send": "node scripts/linq-send.mjs",
+    "linq:webhook": "node scripts/linq-webhook-create.mjs",
+    "sync:dev-vars": "node scripts/sync-dev-vars.mjs"
   },
   "dependencies": {
     "zod": "^3.24.2"

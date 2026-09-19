@@ -1,11 +1,27 @@
 {
+  "api_version": "v3",
+  "webhook_version": "2026-02-03",
+  "event_type": "message.received",
   "event_id": "evt_fixture_001",
-  "type": "message",
-  "chat_id": "chat_fixture_tokyo",
-  "is_dm": false,
-  "text": "yo the teamLab tickets just got cancelled wtf",
-  "sender": {
-    "id": "handle_elrich",
-    "handle": "elrich"
+  "created_at": "2026-02-05T19:31:13.736Z",
+  "data": {
+    "chat": {
+      "id": "chat_fixture_tokyo",
+      "is_group": true
+    },
+    "id": "msg_fixture_001",
+    "direction": "inbound",
+    "sender_handle": {
+      "id": "handle_elrich",
+      "handle": "elrich",
+      "is_me": false
+    },
+    "parts": [
+      {
+        "type": "text",
+        "value": "yo the teamLab tickets just got cancelled wtf"
+      }
+    ],
+    "service": "iMessage"
   }
 }

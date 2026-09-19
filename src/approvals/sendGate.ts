@@ -1,5 +1,5 @@
 import type { Intent, VirgilEvent } from "../shared";
-import { GC_RESPONSE_COOLDOWN_MS } from "../shared";
+import { GC_RESPONSE_COOLDOWN_MS, isVirgilGreeting } from "../shared";
 
 export interface ProposalApproval {
   proposalMessageId: string;
@@ -13,7 +13,10 @@ const lastGcReplyAt = new Map<string, number>();
 export function shouldRespond(event: VirgilEvent, intent: Intent): boolean {
   if (event.kind === "reaction" && intent === "APPROVAL") return true;
   if (event.visibility === "dm") return true;
-  if (intent === "DISRUPTION" || intent === "ONBOARDING") return true;
+  if (intent === "DISRUPTION" || intent === "ONBOARDING" || intent === "APPROVAL") {
+    return true;
+  }
+  if (isVirgilGreeting(event.text)) return true;
 
   const last = lastGcReplyAt.get(event.chatId) ?? 0;
   if (Date.now() - last < GC_RESPONSE_COOLDOWN_MS) return false;

@@ -16,6 +16,8 @@ export class TripAgent {
   ) {}
 
   async handleEvent(event: VirgilEvent): Promise<void> {
+    if (!isInboundProcessable(event)) return;
+
     // TODO(phase-1): persist chat_event via memory/
     const intent = await classify(event, this.env);
 
@@ -31,6 +33,19 @@ export class TripAgent {
       text,
     });
   }
+}
+
+/** Skip outbound echoes and non-inbound transport events (delivered/read/sent). */
+export function isInboundProcessable(event: VirgilEvent): boolean {
+  if (event.direction === "outbound") return false;
+
+  const t = event.sourceEventType?.toLowerCase();
+  if (!t) {
+    return event.kind === "message" || event.kind === "reaction";
+  }
+  if (t === "message.received") return true;
+  if (t.startsWith("reaction.")) return true;
+  return false;
 }
 
 /** Stub locator — replace with Agent namespace / DO id binding in Phase 0. */
