@@ -1,0 +1,26 @@
+{
+  "name": "virgil",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Virgil — AI group-trip companion (Linq + Cloudflare Agents + Browserbase)",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250726.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9",
+    "wrangler": "4.28.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

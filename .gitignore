@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.npm/
+.pnpm-store/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Build / wrangler
+.wrangler/
+dist/
+.turbo/
+coverage/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs / temp
+*.log
+.tmp/

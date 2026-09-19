@@ -1,0 +1,31 @@
+[
+  {
+    "name": "teamLab Planets",
+    "category": "culture",
+    "url": "https://example.com/teamlab",
+    "startTimes": ["11:00", "14:00", "17:00"],
+    "pricePerPerson": 3800,
+    "durationMinutes": 120,
+    "address": "Toyosu, Tokyo",
+    "availabilityConfidence": 0.85
+  },
+  {
+    "name": "Shimokitazawa coffee crawl",
+    "category": "food",
+    "url": "https://example.com/shimokita-coffee",
+    "startTimes": ["13:00", "15:00"],
+    "pricePerPerson": 1500,
+    "durationMinutes": 90,
+    "address": "Shimokitazawa, Tokyo",
+    "availabilityConfidence": 0.7
+  },
+  {
+    "name": "Sumida River walk",
+    "category": "nature",
+    "url": "https://example.com/sumida-walk",
+    "startTimes": ["16:00"],
+    "durationMinutes": 60,
+    "address": "Asakusa, Tokyo",
+    "availabilityConfidence": 0.95
+  }
+]

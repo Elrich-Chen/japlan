@@ -1,0 +1,11 @@
+{
+  "event_id": "evt_fixture_001",
+  "type": "message",
+  "chat_id": "chat_fixture_tokyo",
+  "is_dm": false,
+  "text": "yo the teamLab tickets just got cancelled wtf",
+  "sender": {
+    "id": "handle_elrich",
+    "handle": "elrich"
+  }
+}

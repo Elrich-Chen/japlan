@@ -1,0 +1,11 @@
+{
+  "name": "virgil",
+  "main": "src/server.ts",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "APP_NAME": "virgil"
+  }
+  // Secrets via `wrangler secret put` / .dev.vars — see .env.example
+  // Agent / DO bindings land when Phase 0 wires TripAgent.
+}
